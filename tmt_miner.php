@@ -1,5 +1,4 @@
 <?php
-
 $config = require_once('config.php');
 
 class tmt_miner
@@ -45,6 +44,7 @@ class tmt_miner
 		return $data;
 	}
 
+	// Find data in HTML, put it into an array
 	public static function process($data)
 	{
 		global $config;
@@ -130,10 +130,5 @@ class tmt_miner
 		return $timetable;
 	}
 }
-
-$dat = tmt_miner::get(201213, 'DT228', 'DT228/2', '1-37');
-$tmt = tmt_miner::process($dat);
-
-print_r($tmt);
 
 ?>
