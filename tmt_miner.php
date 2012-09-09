@@ -114,11 +114,11 @@ class tmt_miner
 
 						// This data is always at the end, so add it from the end
 						$class['weeks'] = substr($details->item($details->length - 1)->textContent, 0, -2);
-						$class['time'] = substr($details->item($details->length - 2)->textContent, 0, -2);;
-						$class['lecturer'] = substr($details->item($details->length - 3)->textContent, 0, -2);;
-						$class['siteroomcode'] = substr($details->item($details->length - 4)->textContent, 0, -2);;
-						$class['activitytype'] = substr($details->item($details->length - 5)->textContent, 0, -2);;
-						$class['module'] = substr($details->item($details->length - 6)->textContent, 0, -2);;
+						$class['time'] = substr($details->item($details->length - 2)->textContent, 0, -2);
+						$class['lecturer'] = substr($details->item($details->length - 3)->textContent, 0, -2);
+						$class['siteroomcode'] = substr($details->item($details->length - 4)->textContent, 0, -2);
+						$class['activitytype'] = substr($details->item($details->length - 5)->textContent, 0, -2);
+						$class['module'] = substr($details->item($details->length - 6)->textContent, 0, -2);
 
 						// Add to timetable array
 						$timetable[$day][] = $class;

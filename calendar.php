@@ -2,7 +2,6 @@
 require_once('tmt_miner.php');
 require_once('ical_export.php');
 
-
 class calendar
 {
 	public static function academicYear()
@@ -80,7 +79,7 @@ class calendar
 $filters = array();
 foreach ($_REQUEST as $k => $v)
 {
-	if (substr($k, 0, 2) == "f_")
+	if (substr($k, 0, 2) == 'f_')
 	{
 		$filters[substr($k, 2)] = $v;
 	}
