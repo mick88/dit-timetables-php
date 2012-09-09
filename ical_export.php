@@ -19,17 +19,17 @@ END:VEVENT
 
 class ical_export
 {
-	public static function event($day, $range, $module, $info)
+	public static function event($day, $timerange, $module, $info)
 	{
 		global $ical_event_format;
 
-		$range = explode('-', $range);
+		$timerange = explode('-', $timerange);
 
-		$start = explode(':', $range[0]);
-		$start = mktime($start[0], $start[1], 0, 1, 3 + $day, 2000);
+		$start = explode(':', $timerange[0]);
+		$start = mktime($start[0], $start[1], 0, 1, 4 + $day, 2010);
 
-		$end = explode(':', $range[1]);
-		$end = mktime($end[0], $end[1], 0, 1, 3 + $day, 2000);
+		$end = explode(':', $timerange[1]);
+		$end = mktime($end[0], $end[1], 0, 1, 4 + $day, 2010);
 
 		$event = sprintf($ical_event_format,
 				md5(uniqid(mt_rand(), true)),
@@ -64,11 +64,4 @@ class ical_export
 		return $ics;
 	}
 }
-
-/*
-$dat = tmt_miner::get(201213, 'DT228', 'DT228/2', '1-37');
-$tmt = tmt_miner::process($dat);
-
-echo ical_export::load($tmt);
-*/
 ?>

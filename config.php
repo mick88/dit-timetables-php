@@ -11,7 +11,7 @@ $config['url_login'] = $config['url_portal'] .
 // Timetable request url
 // Format:  Academic year(201213), Course(DT228), Course/Year(DT228/2), Weeks(4-16)
 $config['url_timetable'] = $config['url_portal'] .
-	'?reqtype=timetable&sType=class&sKey=%d|%s|%s&sWeeks=%s';
+	'?reqtype=timetable&sType=class&sKey=%s|%s|%s&sWeeks=%s';
 
 $config['curl_options'] = array(
 		CURLOPT_HEADER => false,
