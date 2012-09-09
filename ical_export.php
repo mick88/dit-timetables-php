@@ -9,8 +9,8 @@ $ical_foot = "END:VCALENDAR";
 $ical_event_format = "BEGIN:VEVENT
 UID:%s@declancurran.me
 DTSTAMP:%s
-DTSTART:%s
-DTEND:%s
+DTSTART;TZID=Europe/Dublin:%s
+DTEND;TZID=Europe/Dublin:%s
 SUMMARY:%s
 DESCRIPTION:%s
 RRULE:FREQ=WEEKLY
