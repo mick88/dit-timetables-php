@@ -120,8 +120,8 @@
 <body>
 	<div id="column1">
 		<h1>Hello</h1>
-		Let's face it, webtimetables is a heap of shit.<br />
-		This is a solution to that.<br />
+		Let's face it, webtimetables is terrible.<br />
+		This is an (experimental) solution to that.<br />
 		<br />
 		With this tool you can generate an iCal calendar, based on your DIT timetable. With that calendar, you can link it to Google Calendar, have it update automatically every few hours, and sync it to your phone.<br />
 		<h2>To get your calendar:</h2>
@@ -152,7 +152,7 @@
 
 		<input type="button" value="Get calendar URL" onclick="generate();"/>
 		<br />
-		<br />
+		<br />URL:
 		<div id="urlbox"></div>
 	</div>
 	<div id="column2">
@@ -165,12 +165,14 @@
 		<br />
 		Thanks for coming. This project is open source, public domain.<br />
 		<br />
-		<a href="https://gitorious.org/dit-timetables">Gitorious</a>
-		<br />
-		<br />
 		P.S. If you share your Google Calendar with your class, it'll lessen the load on my server. Thanks.<br />
+		<h2>Links</h2>
+		<a href="https://gitorious.org/dit-timetables">Gitorious Project</a>
 		<br />
-		<a href="http://declancurran.me/oldtimetables">Old timetables site</a>
+		<a href="http://twitter.com/entityin">My Twitter</a> (If you have questions / problems)
+		<br />
+		<a href="http://declancurran.me/oldtimetables">Old timetables site</a> (Don't use this)
+		<br />
 	</div>
 </body>
 </html>
