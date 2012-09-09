@@ -96,7 +96,7 @@
 			var box = document.getElementById("urlbox");
 			var inputs = document.getElementsByTagName("input");
 
-			var url = "http://declancurran.me/timetables2/calendar.php?";
+			var url = "http://declancurran.me/timetables/calendar.php?";
 
 			for (var i = 0; i < inputs.length; i++)
 			{
@@ -158,7 +158,7 @@
 	<div id="column2">
 		<h1>How to use it</h1>
 		To add it to Google Calendar:
-		<img src="howtoadd.jpg" alt="" />
+		<img src="howtoadd.jpg" alt="Add by URL" />
 		<br />
 		Or, you can just go to the URL and download it, if you want to use your own calendar software.
 		<br />
@@ -168,7 +168,9 @@
 		<a href="https://gitorious.org/dit-timetables">Gitorious</a>
 		<br />
 		<br />
-		P.S. If you share your Google Calendar with your class, it'll lessen the load on my server. Thanks.
+		P.S. If you share your Google Calendar with your class, it'll lessen the load on my server. Thanks.<br />
+		<br />
+		<a href="http://declancurran.me/oldtimetables">Old timetables site</a>
 	</div>
 </body>
 </html>
