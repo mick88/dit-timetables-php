@@ -33,9 +33,9 @@ class ical_export
 
 		$event = sprintf($ical_event_format,
 				md5(uniqid(mt_rand(), true)),
-				date('Ymd') . 'T' . date('His') . 'Z',
-				date('Ymd', $start) . 'T' . date('His', $start) . 'Z',
-				date('Ymd', $end) . 'T' . date('His', $end) . 'Z',
+				date('Ymd') . 'T' . date('His'),
+				date('Ymd', $start) . 'T' . date('His', $start),
+				date('Ymd', $end) . 'T' . date('His', $end),
 				$module,
 				$info
 			);
