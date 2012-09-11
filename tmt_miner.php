@@ -1,5 +1,5 @@
 <?php
-$config = require('config.php');
+$config = require_once('config.php');
 
 class tmt_miner
 {
