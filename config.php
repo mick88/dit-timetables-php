@@ -27,5 +27,8 @@ $config['curl_options'] = array(
 		CURLOPT_TIMEOUT => 10
 	);
 
+$config['log_maxsize'] = 3000000; // 3MB
+$config['log_rotate'] = 4;
+
 return $config;
 ?>

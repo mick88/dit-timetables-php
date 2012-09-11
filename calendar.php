@@ -1,6 +1,7 @@
 <?php
 require_once('tmt_miner.php');
 require_once('ical_export.php');
+require_once('log.php');
 
 class calendar
 {
@@ -86,5 +87,6 @@ foreach ($_REQUEST as $k => $v)
 }
 
 calendar::load($_REQUEST['course'], $_REQUEST['semester'], $filters);
+log::write('calendar.log', date('d/m/y H:i:s') . ' ' . json_encode($_GET) . ' ' . $_SERVER['REMOTE_ADDR']);
 
 ?>
