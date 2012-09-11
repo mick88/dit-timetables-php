@@ -87,6 +87,6 @@ foreach ($_REQUEST as $k => $v)
 }
 
 calendar::load($_REQUEST['course'], $_REQUEST['semester'], $filters);
-log::write('calendar.log', date('d/m/y H:i:s') . ' ' . json_encode($_GET) . ' ' . $_SERVER['REMOTE_ADDR']);
+log::write('calendar.log', date('d/m/y H:i:s') . ' [' . $_SERVER['REMOTE_ADDR'] . '] ' . json_encode($_GET));
 
 ?>
