@@ -39,6 +39,7 @@
 			width: 400px;
 			line-height: 22px;
 			padding-right: 30px;
+			padding-bottom: 30px;
 			border-right: 1px solid #CCCCCC;
 		}
 
@@ -48,6 +49,7 @@
 			width: 400px;
 			line-height: 22px;
 			padding-left: 30px;
+			padding-bottom: 30px;
 		}
 
 		#filterbox
@@ -157,15 +159,23 @@
 	</div>
 	<div id="column2">
 		<h1>How to use it</h1>
-		To add it to Google Calendar:
-		<img src="howtoadd.jpg" alt="Add by URL" />
-		<br />
-		Or, you can just go to the URL and download it, if you want to use your own calendar software.
-		<br />
-		<br />
-		Thanks for coming. This project is open source, public domain.<br />
-		<br />
-		P.S. If you share your Google Calendar with your class, it'll lessen the load on my server. Thanks.<br />
+		<p>
+			To add it to Google Calendar:
+			<img src="howtoadd.jpg" alt="Add by URL" />
+			<br />
+			Or, you can just go to the URL and download it, if you want to use your own calendar software.
+			<br />
+			<br />
+			If you share your Google Calendar with your class, it'll lessen the load on my server. Thanks.<br />
+		</p>
+		<h2>Notes</h2>
+		<p>
+			This project is <strong>experimental</strong>.<br />
+			It is open source, and is available on <a href="https://gitorious.org/dit-timetables">Gitorious</a>.<br />
+			It is in the public domain, so you can do whatever you want with it.<br />
+			<br />
+			You can filter your timetable for a single sub-group (Group A, B, etc) by setting the <strong>sub-group code</strong> filter to something like this: DT228/2A
+		</p>
 		<h2>Links</h2>
 		<a href="https://gitorious.org/dit-timetables">Gitorious Project</a>
 		<br />
