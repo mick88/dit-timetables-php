@@ -16,10 +16,16 @@ class tmt_miner
 
 		if (!curl_exec($curl))
 		{
-			curl_close($curl);
-
 			if ($config['debug'])
-				die("Unable to log into webtimetables: <br />\n" . curl_error($curl));
+			{
+				echo ("Unable to log into webtimetables: " . curl_error($curl));
+				curl_close($curl);
+				exit;
+			}
+			else
+			{
+				curl_close($curl);
+			}
 
 			return false;
 		}
@@ -32,13 +38,20 @@ class tmt_miner
 		$data;
 		if (!($data = curl_exec($curl)))
 		{
-			curl_close($curl);
-
 			if ($config['debug'])
-				die("Unable to retrieve timetable data: <br />\n" . curl_error($curl));
+			{
+				echo ("Unable to retrieve timetable data: " . curl_error($curl));
+				curl_close($curl);
+				exit;
+			}
+			else
+			{
+				curl_close($curl);
+			}
 
 			return false;
 		}
+		
 		curl_close($curl);
 
 		return $data;

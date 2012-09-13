@@ -3,6 +3,8 @@ require_once('tmt_miner.php');
 require_once('ical_export.php');
 require_once('log.php');
 
+$config = require('config.php');
+
 class calendar
 {
 	public static function academicYear()
@@ -41,18 +43,36 @@ class calendar
 
 	public static function load($course, $semester, $filters)
 	{
+		global $config;
+
 		$course = strtoupper($course);
 		$code = strtok($course, '/');
 		$academicyear = self::academicYear();
 		$weeks = $semester == 1 ? '4-17' : '23-37';
+		$cachefile = $config['cache_folder'] . '/' . str_replace('/', '.', strtolower($course)) . '.' . $semester . '.json';
 
-		$html = tmt_miner::get($academicyear, $code, $course, $weeks);
-		if (!$html)
-			self::failure();
-		
-		$timetable = tmt_miner::process($html);
-		if (!$timetable)
-			self::failure();
+		$timetable;
+
+		// Check if cache exists and hasn't expired
+		if (file_exists($cachefile) and filemtime($cachefile) > (time() - $config['cache_time']))
+		{
+			// Load cache
+			$timetable = json_decode(file_get_contents($cachefile), true);
+		}
+		else
+		{
+			// Mine data from webtimetables
+			$html = tmt_miner::get($academicyear, $code, $course, $weeks);
+			if (!$html)
+				self::failure();
+			
+			$timetable = tmt_miner::process($html);
+			if (!$timetable)
+				self::failure();
+			
+			// Store cache
+			file_put_contents($cachefile, json_encode($timetable));
+		}
 		
 		$timetable = self::filter($timetable, $filters);
 		$calendar = ical_export::load($timetable);
