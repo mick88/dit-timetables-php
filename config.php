@@ -23,12 +23,14 @@ $config['curl_options'] = array(
 
 		CURLOPT_ENCODING => '',
 
-		CURLOPT_CONNECTTIMEOUT => 8,
-		CURLOPT_TIMEOUT => 12
+		CURLOPT_CONNECTTIMEOUT => 5,
+		CURLOPT_TIMEOUT => 8
 	);
 
 $config['log_maxsize'] = 3000000; // 3MB
 $config['log_rotate'] = 4;
+
+$config['log_file_calendar'] = 'calendar.log';
 
 $config['cache_folder'] = 'cache';
 $config['cache_time'] = 3.5 * 60 * 60;
