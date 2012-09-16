@@ -17,7 +17,7 @@ foreach ($_REQUEST as $k => $v)
 $timetable = tmt_loader::load($_REQUEST['course'], $_REQUEST['semester'], $filters);
 if (!$timetable)
 {
-	die('Unable to load timetable and no cache is available.');
+	die('Unable to load timetable and no cache is available. Did you put in your course code?');
 }
 
 ?>

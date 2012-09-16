@@ -183,7 +183,7 @@
 		<br />URL:
 		<div id="urlbox"></div>
 		<br />
-		<a href="#" onclick="printable();">Printable timetable</a>
+		<input type="button" value="Printable timetable" onclick="printable();" />
 	</div>
 	<div id="column2">
 		<h1>How to use it</h1>
