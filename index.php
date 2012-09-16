@@ -93,29 +93,55 @@
 			}
 		}
 
-		function generate()
+		function generatelink()
 		{
 			var box = document.getElementById("urlbox");
-			var inputs = document.getElementsByTagName("input");
-
 			var url = "http://declancurran.me/timetables/calendar.php?";
+
+			var req = "";
+			var inputs = document.getElementsByTagName("input");
 
 			for (var i = 0; i < inputs.length; i++)
 			{
 				if (inputs[i].type == "text" && inputs[i].value != "")
 				{
-					url = url + inputs[i].name + "=" + inputs[i].value + "&amp;";
+					req = req + inputs[i].name + "=" + inputs[i].value + "&amp;";
 				}
 				else if (inputs[i].type == "radio" && inputs[i].checked)
 				{
-					url = url + "semester=" + inputs[i].value + "&amp;";
+					req = req + "semester=" + inputs[i].value + "&amp;";
 				}
 			}
 
 			// Get rid of last ampersand
-			url = url.slice(0, -5);
+			req = req.slice(0, -5);
 
-			box.innerHTML = url;
+			box.innerHTML = url + req;
+		}
+
+		function printable()
+		{
+			var url = "print.php?";
+
+			var req = "";
+			var inputs = document.getElementsByTagName("input");
+
+			for (var i = 0; i < inputs.length; i++)
+			{
+				if (inputs[i].type == "text" && inputs[i].value != "")
+				{
+					req = req + inputs[i].name + "=" + inputs[i].value + "&";
+				}
+				else if (inputs[i].type == "radio" && inputs[i].checked)
+				{
+					req = req + "semester=" + inputs[i].value + "&";
+				}
+			}
+
+			// Get rid of last ampersand
+			req = req.slice(0, -1);
+
+			window.location = url + req;
 		}
 	</script>
 </head>
@@ -152,10 +178,12 @@
 			Module <input type="text" name="f_module" class="filters" /><br />
 		</div>
 
-		<input type="button" value="Get calendar URL" onclick="generate();"/>
+		<input type="button" value="Get calendar URL" onclick="generatelink();"/>
 		<br />
 		<br />URL:
 		<div id="urlbox"></div>
+		<br />
+		<a href="#" onclick="printable();">Printable timetable</a>
 	</div>
 	<div id="column2">
 		<h1>How to use it</h1>

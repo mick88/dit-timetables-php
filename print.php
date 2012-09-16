@@ -116,10 +116,9 @@ if (!$timetable)
 	</style>
 
 	<script type="text/javascript">
-		function colortoggle()
+		function colortoggle(link)
 		{
 			var style = document.getElementById("classtypes");
-			var link = document.getElementById("colorlink");
 
 			// Toggle color visibility
 			style.disabled = !style.disabled;
@@ -133,7 +132,7 @@ if (!$timetable)
 </head>
 <body>
 	<div id="main">
-		<div class="linkbox"><a href="#" onclick="colortoggle();" id="colorlink">b/w</a></div>
+		<div class="linkbox"><a href="#" onclick="colortoggle(this);" id="colorlink">b/w</a></div>
 		<div class="head">Mon</div>
 		<div class="head">Tue</div>
 		<div class="head">Wed</div>
@@ -143,7 +142,7 @@ if (!$timetable)
 		<div style="clear:both;"></div>
 		<div id="content">
 <?php
-	$blockformat = "			<div style=\"position:absolute; left: %dpx; top: %dpx; height: %dpx;\" class=\"class %s\">%s</div>\n";
+	$blockformat = "\t\t\t<div style=\"position:absolute; left: %dpx; top: %dpx; height: %dpx;\" class=\"class %s\">%s</div>\n";
 	$latestclass = 0;
 	foreach ($timetable as $day => $classes)
 	{

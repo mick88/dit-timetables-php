@@ -61,15 +61,15 @@ class tmt_loader
 		{
 			// Mine data from webtimetables
 			$html = tmt_miner::get($academicyear, $code, $course, $weeks);
-			if (!$html)
+			if ($html)
+				$timetable = tmt_miner::process($html);
+
+			if ($timetable)
+				file_put_contents($cachefile, json_encode($timetable));
+			elseif (file_exists($cachefile))
+				$timetable = json_decode(file_get_contents($cachefile), true);
+			else
 				return false;
-			
-			$timetable = tmt_miner::process($html);
-			if (!$timetable)
-				return false;
-			
-			// Store cache
-			file_put_contents($cachefile, json_encode($timetable));
 		}
 		
 		if (count($filters) > 0)
