@@ -179,11 +179,10 @@
 		</div>
 
 		<input type="button" value="Get calendar URL" onclick="generatelink();"/>
+		<input type="button" value="Printable timetable" onclick="printable();" />
 		<br />
 		<br />URL:
 		<div id="urlbox"></div>
-		<br />
-		<input type="button" value="Printable timetable" onclick="printable();" />
 	</div>
 	<div id="column2">
 		<h1>How to use it</h1>
