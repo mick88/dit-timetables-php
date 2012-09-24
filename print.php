@@ -160,7 +160,8 @@ if (!$timetable)
 			$y = ($start - 7) * 41 - 1; // -1 for border
 			$len = $end - $start;
 
-			printf($blockformat, $x, $y, $len * 40 + ($len - 1), $class['activitytype'], $class['module'] . '<br />' . $class['siteroomcode']);
+			printf($blockformat, $x, $y, $len * 40 + ($len - 1), $class['activitytype'], 
+				substr($class['module'], 0, 18) . '<br />' . $class['siteroomcode']);
 		}
 	}
 ?>

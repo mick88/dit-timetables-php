@@ -130,8 +130,17 @@ class tmt_miner
 						$class['time'] = substr($details->item($details->length - 2)->textContent, 0, -2);
 						$class['lecturer'] = substr($details->item($details->length - 3)->textContent, 0, -2);
 						$class['siteroomcode'] = substr($details->item($details->length - 4)->textContent, 0, -2);
-						$class['activitytype'] = substr($details->item($details->length - 5)->textContent, 0, -2);
-						$class['module'] = substr($details->item($details->length - 6)->textContent, 0, -2);
+
+						// Check colour of next text, if it's pink then there is a class type (Lab, Lecture, ..)
+						if ($details->item($details->length - 5)->attributes->item(1)->textContent == "#E32198")
+						{
+							$class['activitytype'] = substr($details->item($details->length - 5)->textContent, 0, -2);
+							$class['module'] = substr($details->item($details->length - 6)->textContent, 0, -2);
+						}
+						else
+						{
+							$class['module'] = substr($details->item($details->length - 5)->textContent, 0, -2);
+						}
 
 						// Add to timetable array
 						$timetable[$day][] = $class;
