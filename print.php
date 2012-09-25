@@ -43,7 +43,6 @@ if (!$timetable)
 		#main
 		{
 			width: 1027px;
-			/background-color: #DDDDDD;
 			padding: 2px;
 		}
 
@@ -53,20 +52,15 @@ if (!$timetable)
 			position: relative;
 			width: 966px;
 			height: 655px;
-			/background-color: #ffbbdd;
 		}
 
 		.class, .head, .time
 		{
 			width: 160px;
 			height: 40px;
-			/margin-left: 1px;
-			/margin-bottom: 1px;
 			border-right: solid 1px grey;
 			border-bottom: solid 1px grey;
-
 			text-align: center;
-			/background-color: #999999;
 		}
 
 		.class
