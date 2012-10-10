@@ -144,6 +144,17 @@
 			window.location = url + req;
 		}
 	</script>
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		(function() {
+			var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+			s.type = 'text/javascript';
+			s.async = true;
+			s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+			t.parentNode.insertBefore(s, t);
+		})();
+		/* ]]> */
+	</script>
 </head>
 <body>
 	<div id="column1">
@@ -210,6 +221,13 @@
 		<br />
 		<a href="http://declancurran.me/oldtimetables">Old timetables site</a> (Don't use this)
 		<br />
+		<br />
+		<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://declancurran.me/timetables/"></a>
+		<noscript>
+			<a href="http://flattr.com/thing/932432/declancurran-metimetables" target="_blank">
+				<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
+			</a>
+		</noscript>
 	</div>
 </body>
 </html>
