@@ -12,6 +12,7 @@ DTSTAMP:%s
 DTSTART;TZID=Europe/Dublin:%s
 DTEND;TZID=Europe/Dublin:%s
 SUMMARY:%s
+LOCATION:%s
 DESCRIPTION:%s
 RRULE:FREQ=WEEKLY
 END:VEVENT
@@ -19,7 +20,7 @@ END:VEVENT
 
 class ical_export
 {
-	public static function event($day, $timerange, $module, $info)
+	public static function event($day, $timerange, $module, $location, $info)
 	{
 		global $ical_event_format;
 
@@ -37,6 +38,7 @@ class ical_export
 				date('Ymd', $start) . 'T' . date('His', $start),
 				date('Ymd', $end) . 'T' . date('His', $end),
 				$module,
+				$location,
 				$info
 			);
 
@@ -53,8 +55,8 @@ class ical_export
 			foreach ($classes as $id => $class)
 			{
 				$ics .= ical_export::event($day, $class['time'], $class['module'], 
+					$class['siteroomcode'],
 					$class['activitytype'] . '\n' .
-					$class['siteroomcode'] . '\n' .
 					$class['lecturer']);
 			}
 		}
