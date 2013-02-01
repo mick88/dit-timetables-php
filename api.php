@@ -2,7 +2,7 @@
 
 if (!isset($_REQUEST['course']) or !isset($_REQUEST['semester']))
 {
-	die('Unable to load timetable and no cache is available. Did you put in your course code?');
+	die(json_encode(array("success" => false)));
 }
 
 require_once('tmt_loader.php');
