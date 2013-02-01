@@ -215,7 +215,7 @@
 			You can filter your timetable for a single sub-group (Group A, B, etc) by setting the <strong>sub-group code</strong> filter to something like this: DT228/2A
 			<br />
 			<br />
-			Raw data api: <a href="api.php">api.php</a>
+			<a href="api.txt">Raw data api</a>
 		</p>
 		<h2>Links</h2>
 		<a href="https://gitorious.org/dit-timetables">Gitorious Project</a>
