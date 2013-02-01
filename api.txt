@@ -1,0 +1,18 @@
+-- API
+api.php?
+
+-- GET parameters
+	course=dt228/2
+	semester=1
+
+-- Optional GET parameters (For filtering output, by group etc)
+	f_classgroup=
+	f_classgroupcode=
+	f_clsgrpsubgrp=
+	f_clsgrpsubgrpcode=
+	f_weeks=
+	f_time=
+	f_lecturer=
+	f_siteroomcode=
+	f_activitytype=
+	f_module=

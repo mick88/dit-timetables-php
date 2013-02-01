@@ -20,10 +20,7 @@ foreach ($_REQUEST as $k => $v)
 
 // Load timetable
 $timetable = tmt_loader::load($_REQUEST['course'], $_REQUEST['semester'], $filters);
-if (!$timetable)
-{
-	die('Unable to load timetable and no cache is available. Did you put in your course code?');
-}
 
-echo(json_encode($timetable));
+$json = array("success" => $timetable != NULL, "data" => $timetable);
+echo(json_encode($json));
 ?>
