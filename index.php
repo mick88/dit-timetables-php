@@ -199,9 +199,6 @@
 			<img src="howtoadd.jpg" alt="Add by URL" />
 			<br />
 			Or, you can just go to the URL and download it, if you want to use your own calendar software.
-			<br />
-			<br />
-			If you share your Google Calendar with your class, it'll lessen the load on my server. Thanks.<br />
 		</p>
 		<h2>Notes</h2>
 		<p>
