@@ -76,7 +76,7 @@ class tmt_miner
 		$xpath = new DOMXPath($doc);
 
 		// Find the main table
-		$rows = $xpath->query('/html/body/div/div/form/table/tbody/tr');
+		$rows = $xpath->query('//*[@id="scrollContent"]/div');
 
 		if (!$rows or $rows->length < 1)
 		{
@@ -92,59 +92,75 @@ class tmt_miner
 		for ($i = 0; $i < $rows->length; $i++)
 		{
 			$thisrow = $rows->item($i);
+			$rowid = $rows->item($i)->getAttribute('id');
 
-			// If the row has an empty header, then it's the first element before the next day
-			if($thisrow->firstChild->nodeName == 'th' and
-				$thisrow->firstChild->nodeValue == '')
+			// If the row's id starts with r, then it's seperating days
+			if(substr($rowid, 0, 1) == 'r')
 			{
 				$day++;
 				$timetable[$day] = array();
 			}
 			else
 			{
-				// Loop through cells in the row
-				for ($j = 0; $j < $thisrow->childNodes->length; $j++)
+				// Find the details in the cell
+				$details = $xpath->query('table/tr/td', $thisrow);
+
+				if ($details and $details->length > 0)
 				{
-					$thiscell = $thisrow->childNodes->item($j);
+					$class = array();
 
-					// Find the details in the cell
-					$details = $xpath->query('table/tr/td/font', $thiscell);
-					if ($details and $details->length > 0)
+					// Add all data into the array
+					// Classes
+					$class['classgroup'] = $details->item(0)->textContent;
+					$class['classgroupcode'] = $details->item(1)->textContent;
+
+					if ($details->item(2)->textContent != '-' and $details->item(3)->textContent != '-')
 					{
-						$class = array();
+						$class['clsgrpsubgrp'] = $details->item(2)->textContent;
+						$class['clsgrpsubgrpcode'] = $details->item(3)->textContent;
+					}
 
-						// Add all data into the array
-						// Classes
-						$class['classgroup'] = substr($details->item(0)->textContent, 0, -2);
-						$class['classgroupcode'] = substr($details->item(1)->textContent, 0, -2);
+					// This data is always at the end, so add it from the end
+					$class['module'] = $details->item(4)->textContent;
 
-						// If there are sub groups
-						if ($details->length > 8)
+					if ($class['module'] == '-')
+					{
+						// Mine the ajax site for module name
+						$curl = curl_init(
+							sprintf($config['url_ajax'], tmt_loader::academicYear(), substr($rowid, 1))
+								);
+						curl_setopt_array($curl, $config['curl_options']);
+
+						$moduledata;
+						if (!($moduledata = curl_exec($curl)))
 						{
-							$class['clsgrpsubgrp'] = substr($details->item(2)->textContent, 0, -2);
-							$class['clsgrpsubgrpcode'] = substr($details->item(3)->textContent, 0, -2);
-						}
-
-						// This data is always at the end, so add it from the end
-						$class['weeks'] = substr($details->item($details->length - 1)->textContent, 0, -2);
-						$class['time'] = substr($details->item($details->length - 2)->textContent, 0, -2);
-						$class['lecturer'] = substr($details->item($details->length - 3)->textContent, 0, -2);
-						$class['siteroomcode'] = substr($details->item($details->length - 4)->textContent, 0, -2);
-
-						// Check colour of next text, if it's pink then there is a class type (Lab, Lecture, ..)
-						if ($details->item($details->length - 5)->attributes->item(1)->textContent == "#E32198")
-						{
-							$class['activitytype'] = substr($details->item($details->length - 5)->textContent, 0, -2);
-							$class['module'] = substr($details->item($details->length - 6)->textContent, 0, -2);
+							curl_close($curl);
 						}
 						else
 						{
-							$class['module'] = substr($details->item($details->length - 5)->textContent, 0, -2);
-						}
+							$mdoc = new DOMDocument();
+							@$mdoc->loadHTML($moduledata);
+							$mdoc->preserveWhiteSpace = false;
+							$mdoc->recover = true;
 
-						// Add to timetable array
-						$timetable[$day][] = $class;
+
+							$mxpath = new DOMXPath($mdoc);
+
+							// Find the main table
+							$mrows = $mxpath->query('/html/body/table/tr[2]/td');
+							$class['module'] = $mrows->item(0)->textContent;
+						}
 					}
+
+					$class['activitytype'] = $details->item(5)->textContent;
+					$class['siteroomcode'] = $details->item(6)->textContent;
+					$class['lecturer'] = $details->item(7)->textContent;
+
+					$class['time'] = substr($details->item(8)->textContent, 0, 5) . '-' . substr($details->item(8)->textContent, -5);
+					$class['weeks'] = $details->item(9)->textContent;
+
+					// Add to timetable array
+					$timetable[$day][] = $class;
 				}
 			}
 		}
