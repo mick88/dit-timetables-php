@@ -46,7 +46,12 @@ class tmt_loader
 		$course = strtoupper($course);
 		$code = strtok($course, '/');
 		$academicyear = self::academicYear();
-		$semester = $semester == 1 ? 1 : 2;
+
+		if ($semester == "auto")
+			$semester = date("m") < 7 ? 2 : 1;
+		else
+			$semester = $semester == 1 ? 1 : 2;
+
 		$weeks = $semester == 1 ? '4-17' : '23-37';
 		$cachefile = $config['cache_folder'] . '/' . str_replace('/', '.', strtolower($course)) . '.' . $semester . '.json';
 

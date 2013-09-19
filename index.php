@@ -166,7 +166,8 @@
 		<br />
 		<br />
 		Semester<br />
-		<input type="radio" name="semester" value="1" checked="checked" /> 1 (Weeks 4-17)<br />
+		<input type="radio" name="semester" value="auto" checked="checked" /> <strong>Automatic</strong>: July-Dec = 1, Jan-June = 2 <br />
+		<input type="radio" name="semester" value="1" /> 1 (Weeks 4-17)<br />
 		<input type="radio" name="semester" value="2" /> 2 (Weeks 23-37)<br />
 		<br />
 		Wanna filter it? <a href="#" onclick="filterbox(this);">[open]</a><br />
@@ -202,7 +203,8 @@
 		</p>
 		<h2>Notes</h2>
 		<p>
-			This project is <strong>experimental</strong>.<br />
+			This may not work with your timetable. If you have any troubles, contact me on Twitter.<br />
+			<br />
 			It is open source, and is available on <a href="https://gitorious.org/dit-timetables">Gitorious</a>.<br />
 			It is in the public domain, so you can do whatever you want with it.<br />
 			<br />
