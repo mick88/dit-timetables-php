@@ -159,9 +159,6 @@
 <body>
 	<div id="column1">
 		<h1>Hello</h1>
-		Let's face it, webtimetables is terrible.<br />
-		This is an (experimental) solution to that.<br />
-		<br />
 		With this tool you can generate an iCal calendar, based on your DIT timetable. With that calendar, you can link it to Google Calendar, have it update automatically every few hours, and sync it to your phone.<br />
 		<h2>To get your calendar:</h2>
 		DIT course - Must include year, for example: DT228/2
