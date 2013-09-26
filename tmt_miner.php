@@ -112,15 +112,21 @@ class tmt_miner
 					// Add all data into the array
 					// Classes
 					$class['classgroup'] = $details->item(0)->textContent;
+					if ($class['classgroup'] == '-')
+					{
+						if ($config['debug'])
+							die('Timetable data looked malformed.');
+						return false;
+					}
+
 					$class['classgroupcode'] = $details->item(1)->textContent;
 
-					if ($details->item(2)->textContent != '-' and $details->item(3)->textContent != '-')
+					if ($details->item(2)->textContent != '-' or $details->item(3)->textContent != '-')
 					{
 						$class['clsgrpsubgrp'] = $details->item(2)->textContent;
 						$class['clsgrpsubgrpcode'] = $details->item(3)->textContent;
 					}
 
-					// This data is always at the end, so add it from the end
 					$class['module'] = $details->item(4)->textContent;
 
 					if ($class['module'] == '-')
@@ -165,6 +171,7 @@ class tmt_miner
 			}
 		}
 
+		if (empty($timetable)) return false;
 		return $timetable;
 	}
 }
